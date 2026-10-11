@@ -1,3 +1,6 @@
+# Upstream 1.0.6 has five failing tests on Fedora x86_64: four exceed the
+# 32 MiB allocation budget and one expects RenderMemory instead of a buffer-size
+# error. These also fail without our patch.
 %bcond check 0
 
 Name:           tlottie
@@ -7,11 +10,12 @@ Summary:        Library for rendering Lottie animations
 
 License:        MIT
 URL:            https://github.com/dkaraush/tlottie
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 # Enable cargo-c and install the upstream C header.
+# Pull request https://github.com/dkaraush/tlottie/pull/16
 Patch0:         tlottie-cargo-c.patch
 
-BuildRequires:  cargo-rpm-macros >= 26
+BuildRequires:  cargo-rpm-macros
 BuildRequires:  cargo-c
 BuildRequires:  gcc
 
@@ -53,4 +57,4 @@ Header and library files for developing applications that use %{name}.
 
 %changelog
 * Sun Oct 11 2026 Ivan Romanov <drizt72@zoho.eu> - 1.0.6-1
-- Initial package using cargo-c
+- Initial package
