@@ -1,0 +1,18 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -22,2 +22,3 @@
+ c-api = ["cpu"]
++capi = ["c-api"]
+ wasm = ["cpu"]
+@@ -58 +59,11 @@
+ panic = "abort"
++
++[package.metadata.capi.header]
++generation = false
++subdirectory = ""
++
++[package.metadata.capi.install.include]
++asset = [{ from = "include/*.h", to = "" }]
++
++[package.metadata.capi.pkg_config]
++description = "Library for rendering Lottie animations"
