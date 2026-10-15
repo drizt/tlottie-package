@@ -15,6 +15,8 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 # Pull request https://github.com/dkaraush/tlottie/pull/16
 Patch0:         tlottie-cargo-c.patch
 
+ExcludeArch:    %{ix86}
+
 BuildRequires:  cargo-rpm-macros
 BuildRequires:  cargo-c
 BuildRequires:  gcc
